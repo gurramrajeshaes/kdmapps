@@ -334,19 +334,30 @@ extraContainerVolumes: []
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
 ##
 persistence:
-  type: azure-blob
   enabled: true
-  storageAccountName: devaksvolumeskdmapps
-  containerName: dev-grafana-kdmapps
-  secretName: dev-kdmapps-storagekey
-  secretKey: azurestorageaccountkey
+  storageClass: azureblob
   accessMode: ReadWriteOnce
-   size: 10Gi
+  size: 10Gi
+  azureBlob:
+    storageAccountName: devaksvolumeskdmapps
+    containerName: dev-grafana-kdmapps
+    secretName: dev-kdmapps-storagekey
+    secretKey: azurestorageaccountkey
 
-  # # storageClassName: default
-  # accessModes:
-  #   - ReadWriteOnce
-  # size: 10Gi
+# persistence:
+#   type: azure-blob
+#   enabled: true
+#   storageAccountName: devaksvolumeskdmapps
+#   containerName: dev-grafana-kdmapps
+#   secretName: dev-kdmapps-storagekey
+#   secretKey: azurestorageaccountkey
+#   # accessMode: ReadWriteOnce
+#   #  size: 10Gi
+
+#   # # storageClassName: default
+#   accessModes:
+#     - ReadWriteOnce
+#   size: 10Gi
   # # annotations: {}
   # finalizers:
   #   - kubernetes.io/pvc-protection
